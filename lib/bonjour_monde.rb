@@ -21,7 +21,14 @@ def login_twitter
     config.access_token        = ENV["TWITTER_ACCESS_TOKEN"]
     config.access_token_secret = ENV["TWITTER_ACCESS_TOKEN_SECRET"]
   end
-  client.update()
-  binding.pry
+  client
 end
+
+client = login_twitter
+
+list_journalists.sample(5).each do |journalist|
+  client.update("Kikou #{journalist}, trop cool ton dernier article ! #bonjour_monde @the_hacking_pro")
+end
+
+
 
